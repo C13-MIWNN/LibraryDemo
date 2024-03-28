@@ -12,10 +12,16 @@
     <tr>
         <th>Title</th>
         <th>Author</th>
+        <th>Available</th>
+        <th>Total</th>
+        <th>Buy</th>
     </tr>
     <tr th:each="book : ${allBooks}">
         <td th:text="${book.title}"></td>
         <td th:text="${book.author}"></td>
+        <td th:text="${book.numberOfAvailableCopies}"></td>
+        <td th:text="${book.totalNumberOfCopies}"></td>
+        <td><a th:href="@{/copy/new/{bookId}(bookId = ${book.bookId})}">Buy copy</a></td>
     </tr>
 </table>
 

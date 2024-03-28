@@ -3,6 +3,9 @@ package nl.miwnn.se13.vincent.librarydemo.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
 
 /**
  * @author Vincent Velthuizen
@@ -16,12 +19,23 @@ public class Book {
     private String title;
     private String author;
 
-    public Book(String title, String author) {
-        this.title = title;
-        this.author = author;
+    @OneToMany(mappedBy = "book")
+    private List<Copy> copies;
+
+    public int getNumberOfAvailableCopies() {
+        int count = 0;
+
+        for (Copy copy : copies) {
+            if (copy.getAvailable()) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
-    public Book() {
+    public int getTotalNumberOfCopies() {
+        return copies.size();
     }
 
     public Long getBookId() {
