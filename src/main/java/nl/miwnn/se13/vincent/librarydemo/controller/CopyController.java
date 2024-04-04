@@ -26,9 +26,9 @@ public class CopyController {
         this.copyRepository = copyRepository;
     }
 
-    @GetMapping("/copy/new/{bookId}")
-    private String createNewCopy(@PathVariable("bookId") Long bookId) {
-        Optional<Book> optionalBook = bookRepository.findById(bookId);
+    @GetMapping("/copy/new/{bookTitle}")
+    private String createNewCopy(@PathVariable("bookTitle") String bookTitle) {
+        Optional<Book> optionalBook = bookRepository.findByTitle(bookTitle);
 
         if (optionalBook.isPresent()) {
             Copy copy = new Copy();

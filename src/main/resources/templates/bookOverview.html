@@ -21,7 +21,8 @@
         <td th:text="${book.authors}"></td>
         <td th:text="${book.numberOfAvailableCopies}"></td>
         <td th:text="${book.totalNumberOfCopies}"></td>
-        <td><a th:href="@{/copy/new/{bookId}(bookId = ${book.bookId})}">Buy copy</a></td>
+        <td><a th:href="@{/copy/new/{bookTitle}(bookTitle = ${book.title})}">Buy copy</a></td>
+        <td><a th:href="@{/book/edit/{bookTitle}(bookTitle = ${book.title})}">Edit book</a></td>
     </tr>
 </table>
 

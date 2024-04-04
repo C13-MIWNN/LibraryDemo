@@ -8,10 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Vincent Velthuizen
@@ -46,11 +48,30 @@ public class BookController {
 
     @PostMapping("/book/new")
     private String saveBook(@ModelAttribute("book") Book bookToBeSaved, BindingResult result) {
+        if (bookToBeSaved.getBookId() == null
+                && bookRepository.findByTitle(bookToBeSaved.getTitle()).isPresent()) {
+            return "redirect:/book/new";
+        }
+
         if (!result.hasErrors()) {
             bookRepository.save(bookToBeSaved);
         }
 
         return "redirect:/";
+    }
+
+    @GetMapping("/book/edit/{title}")
+    private String showEditBookForm(@PathVariable("title") String title, Model model) {
+        Optional<Book> book = bookRepository.findByTitle(title);
+
+        if (book.isEmpty()) {
+            return "redirect:/";
+        }
+
+        model.addAttribute("book", book.get());
+        model.addAttribute("allAuthors", authorRepository.findAll());
+
+        return "bookForm";
     }
 
 }

@@ -14,6 +14,8 @@ import java.util.Set;
 public class Book {
     @Id @GeneratedValue
     private Long bookId;
+
+    @Column(unique = true)
     private String title;
 
     @ManyToMany
