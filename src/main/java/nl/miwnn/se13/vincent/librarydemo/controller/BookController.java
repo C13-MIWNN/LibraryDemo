@@ -73,6 +73,17 @@ public class BookController {
         return "bookForm";
     }
 
+    @GetMapping("/book/delete/{title}")
+    private String deleteBook(@PathVariable("title") String title) {
+        Optional<Book> book = bookRepository.findByTitle(title);
+
+        if (book.isPresent()) {
+            bookRepository.delete(book.get());
+        }
+
+        return "redirect:/";
+    }
+
     @GetMapping("/book/detail/{title}")
     private String showBookDetails(@PathVariable("title") String title, Model model) {
         Optional<Book> book = bookRepository.findByTitle(title);

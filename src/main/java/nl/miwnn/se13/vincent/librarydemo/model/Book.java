@@ -22,7 +22,7 @@ public class Book {
     @ManyToMany
     private Set<Author> authors;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<Copy> copies;
 
     public int getNumberOfAvailableCopies() {

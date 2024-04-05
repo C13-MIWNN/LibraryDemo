@@ -31,13 +31,15 @@ public class CopyController {
     private String createNewCopy(@PathVariable("bookTitle") String bookTitle) {
         Optional<Book> optionalBook = bookRepository.findByTitle(bookTitle);
 
-        if (optionalBook.isPresent()) {
-            Copy copy = new Copy();
-            copy.setBook(optionalBook.get());
-            copyRepository.save(copy);
+        if (optionalBook.isEmpty()) {
+            return "redirect:/";
         }
 
-        return "redirect:/";
+        Copy copy = new Copy();
+        copy.setBook(optionalBook.get());
+        copyRepository.save(copy);
+
+        return String.format("redirect:/book/detail/%s", copy.getBook().getTitle());
     }
 
     @GetMapping("/copy/borrow/{copyId}")
