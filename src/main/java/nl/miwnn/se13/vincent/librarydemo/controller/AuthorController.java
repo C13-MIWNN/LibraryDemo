@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
  * @author Vincent Velthuizen
  * Deal with everything related to authors
  **/
+@SuppressWarnings("SameReturnValue")
 @Controller
 public class AuthorController {
     private final AuthorRepository authorRepository;

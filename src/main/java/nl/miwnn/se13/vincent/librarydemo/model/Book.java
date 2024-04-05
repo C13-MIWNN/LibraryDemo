@@ -2,7 +2,6 @@ package nl.miwnn.se13.vincent.librarydemo.model;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -11,6 +10,7 @@ import java.util.Set;
  * Represents a book that can have copies
  **/
 
+@SuppressWarnings("unused")
 @Entity
 public class Book {
     @Id @GeneratedValue

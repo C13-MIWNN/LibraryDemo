@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
  * Someone who writes books
  **/
 
+@SuppressWarnings("unused")
 @Entity
 public class Author {
 

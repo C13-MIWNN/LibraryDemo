@@ -10,23 +10,24 @@
 <div class="container">
     <h1>Overview of all the authors known in the library</h1>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th></th>
-        </tr>
-        <tr th:each="author : ${allAuthors}">
-            <td th:text="${author.name}"></td>
-            <td></td>
-        </tr>
-        <form th:action="@{/author/new}" method="post" th:object="${newAuthor}">
+    <form th:action="@{/author/new}" method="post" th:object="${newAuthor}">
+        <table>
             <tr>
-                <td><input type="text" th:field="*{name}"></td>
+                <th><label for="nameField">Name</label></th>
+                <th></th>
+            </tr>
+            <tr th:each="author : ${allAuthors}">
+                <td th:text="${author.name}"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><input id="nameField" type="text" th:field="*{name}"></td>
                 <td><input type="submit" value="Save new author"></td>
             </tr>
-        </form>
 
-    </table>
+        </table>
+
+    </form>
 </div>
 
 <div th:replace="~{fragments/general :: footer}"></div>

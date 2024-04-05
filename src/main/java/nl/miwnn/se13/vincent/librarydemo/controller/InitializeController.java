@@ -16,22 +16,23 @@ import java.util.Set;
  * @author Vincent Velthuizen
  * Set some intial data in the database for testing purposes
  **/
+@SuppressWarnings("SameReturnValue")
 @Controller
-public class IntializeController {
+public class InitializeController {
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
     private final CopyRepository copyRepository;
 
-    public IntializeController(AuthorRepository authorRepository,
-                               BookRepository bookRepository,
-                               CopyRepository copyRepository) {
+    public InitializeController(AuthorRepository authorRepository,
+                                BookRepository bookRepository,
+                                CopyRepository copyRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
         this.copyRepository = copyRepository;
     }
 
     @GetMapping("/initialize")
-    private String intializeDB() {
+    private String initializeDB() {
 
         Author patrick = makeAuthor("Patrick Rothfuss");
         Author brandon = makeAuthor("Brandon Sanderson");
@@ -40,7 +41,7 @@ public class IntializeController {
         Book hobbit = makeBook("The Hobbit", tolkien);
         Book lotr = makeBook("The Lord of the Rings", tolkien);
         Book mistborn = makeBook("Mistborn", brandon);
-        Book wind = makeBook("The Name of the Wind", patrick);
+        makeBook("The Name of the Wind", patrick);
 
         makeCopy(hobbit);
         makeCopy(lotr);

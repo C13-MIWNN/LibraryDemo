@@ -15,6 +15,7 @@ import java.util.Optional;
  * Purpose for the class
  **/
 
+@SuppressWarnings("SameReturnValue")
 @Controller
 public class CopyController {
     private final BookRepository bookRepository;

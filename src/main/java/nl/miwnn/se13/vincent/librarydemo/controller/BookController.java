@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -20,6 +18,7 @@ import java.util.Optional;
  * Handle all requests regarding books
  **/
 
+@SuppressWarnings("SameReturnValue")
 @Controller
 public class BookController {
     private final AuthorRepository authorRepository;

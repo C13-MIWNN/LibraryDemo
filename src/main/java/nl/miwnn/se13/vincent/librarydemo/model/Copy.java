@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToOne;
  * A copy of a book that is either on the shelf or lent to a customer
  **/
 
+@SuppressWarnings("unused")
 @Entity
 public class Copy {
     @Id @GeneratedValue
