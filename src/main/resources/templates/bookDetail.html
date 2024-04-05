@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{fragments/general :: baseHeader(~{:: title})}">
+    <title>Details for a book</title>
+</head>
+<body>
+
+<div th:replace="~{fragments/general :: navbar}"></div>
+
+<div class="container">
+    <h1>Detail for book: <span th:text="${bookToBeShown.title}"></span></h1>
+
+    <p th:text="${bookToBeShown.title}">
+    </p>
+
+    <ul>
+        <li th:each="author : ${bookToBeShown.authors}" th:text="${author.name}"></li>
+    </ul>
+
+    <table>
+        <tr th:each="copy : ${bookToBeShown.copies}">
+            <td th:text="${copy.copyId}"></td>
+            <td th:if="${copy.available}">Available</td>
+            <td th:unless="${copy.available}">Not available</td>
+        </tr>
+    </table>
+
+</div>
+
+<div th:replace="~{fragments/general :: footer}"></div>
+<div th:replace="~{fragments/general :: bottomScripts}"></div>
+
+</body>
+</html>

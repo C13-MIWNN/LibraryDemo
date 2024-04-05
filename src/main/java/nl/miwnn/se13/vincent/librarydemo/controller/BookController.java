@@ -74,4 +74,15 @@ public class BookController {
         return "bookForm";
     }
 
+    @GetMapping("/book/detail/{title}")
+    private String showBookDetails(@PathVariable("title") String title, Model model) {
+        Optional<Book> book = bookRepository.findByTitle(title);
+
+        if (book.isEmpty()) {
+            return "redirect:/book";
+        }
+
+        model.addAttribute("bookToBeShown", book.get());
+        return "bookDetail";
+    }
 }
