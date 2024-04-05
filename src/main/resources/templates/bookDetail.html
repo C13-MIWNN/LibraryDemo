@@ -20,8 +20,12 @@
     <table>
         <tr th:each="copy : ${bookToBeShown.copies}">
             <td th:text="${copy.copyId}"></td>
-            <td th:if="${copy.available}">Available</td>
-            <td th:unless="${copy.available}">Not available</td>
+            <td th:if="${copy.available}">
+                <a th:href="@{/copy/borrow/{copyId}(copyId=${copy.copyId})}">Borrow</a>
+            </td>
+            <td th:unless="${copy.available}">
+                <a th:href="@{/copy/return/{copyId}(copyId=${copy.copyId})}">Return</a>
+            </td>
         </tr>
     </table>
 
