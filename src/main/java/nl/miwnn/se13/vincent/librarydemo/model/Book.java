@@ -19,7 +19,7 @@ public class Book {
     @Column(unique = true)
     private String title;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.DETACH)
     private Set<Author> authors;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)

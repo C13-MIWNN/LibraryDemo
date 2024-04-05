@@ -1,8 +1,8 @@
 package nl.miwnn.se13.vincent.librarydemo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 /**
  * @author Vincent Velthuizen
@@ -16,7 +16,11 @@ public class Author {
     @Id @GeneratedValue
     private Long authorId;
 
+    @Column(unique = true)
     private String name;
+
+    @ManyToMany(mappedBy = "authors", cascade = CascadeType.ALL)
+    private Set<Book> books;
 
     public Long getAuthorId() {
         return authorId;
@@ -37,5 +41,13 @@ public class Author {
     @Override
     public String toString() {
         return name;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 }
