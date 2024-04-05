@@ -31,7 +31,7 @@ public class BookController {
     }
 
 
-    @GetMapping("/")
+    @GetMapping({"/", "/book"})
     private String showBookOverview(Model model) {
         model.addAttribute("allBooks", bookRepository.findAll());
 
