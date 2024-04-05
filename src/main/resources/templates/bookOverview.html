@@ -19,7 +19,9 @@
         </tr>
         <tr th:each="book : ${allBooks}">
             <td><a th:href="@{/book/detail/{bookTitle}(bookTitle = ${book.title})}" th:text="${book.title}"></a></td>
-            <td th:text="${book.authors}"></td>
+            <td>
+                <span th:each="author : ${book.authors}"><a th:href="@{/author/detail/{authorName}(authorName = ${author.name})}" th:text="${author.name}"></a> </span>
+            </td>
             <td th:text="${book.numberOfAvailableCopies}"></td>
             <td th:text="${book.totalNumberOfCopies}"></td>
         </tr>
