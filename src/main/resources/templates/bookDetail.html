@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head th:replace="~{fragments/general :: baseHeader(~{:: title})}">
-    <title>Details for a book</title>
+    <title th:text="|Details for book: ${bookToBeShown.title}|"></title>
 </head>
 <body>
 

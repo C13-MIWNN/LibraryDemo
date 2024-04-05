@@ -30,7 +30,7 @@ public class IntializeController {
         this.copyRepository = copyRepository;
     }
 
-    @GetMapping("/intialize")
+    @GetMapping("/initialize")
     private String intializeDB() {
 
         Author patrick = makeAuthor("Patrick Rothfuss");
