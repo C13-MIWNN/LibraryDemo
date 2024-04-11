@@ -16,17 +16,17 @@
                 <th><label for="nameField">Name</label></th>
                 <th></th>
             </tr>
+
             <tr th:each="author : ${allAuthors}">
                 <td><a th:href="@{/author/detail/{authorName}(authorName = ${author.name})}" th:text="${author.name}"></a></td>
                 <td></td>
             </tr>
+
             <tr>
                 <td><input id="nameField" type="text" th:field="*{name}"></td>
                 <td><input type="submit" value="Save new author"></td>
             </tr>
-
         </table>
-
     </form>
 </div>
 

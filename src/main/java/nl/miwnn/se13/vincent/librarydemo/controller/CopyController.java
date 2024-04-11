@@ -44,15 +44,15 @@ public class CopyController {
 
     @GetMapping("/copy/borrow/{copyId}")
     private String makeCopyUnavailable(@PathVariable("copyId") Long copyId) {
-        return setAvailabilityForCopyAndRedirectToBook(copyId, false);
+        return setAvailabilityAndRedirectToBook(copyId, false);
     }
 
     @GetMapping("/copy/return/{copyId}")
     private String makeCopyAvailable(@PathVariable("copyId") Long copyId) {
-        return setAvailabilityForCopyAndRedirectToBook(copyId, true);
+        return setAvailabilityAndRedirectToBook(copyId, true);
     }
 
-    private String setAvailabilityForCopyAndRedirectToBook(Long copyId, boolean available) {
+    private String setAvailabilityAndRedirectToBook(Long copyId, boolean available) {
         Optional<Copy> optionalCopy = copyRepository.findById(copyId);
 
         if (optionalCopy.isEmpty()) {

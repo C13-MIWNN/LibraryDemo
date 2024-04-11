@@ -2,7 +2,7 @@ package nl.miwnn.se13.vincent.librarydemo.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -23,7 +23,14 @@ public class Book {
     private Set<Author> authors;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    private List<Copy> copies;
+    private Set<Copy> copies;
+
+    public Book() {
+        bookId = null; // Hibernate expects null for purposes of creating new or updating existing entities
+        title = "";
+        authors = new HashSet<>();
+        copies = new HashSet<>();
+    }
 
     public int getNumberOfAvailableCopies() {
         int count = 0;
@@ -65,11 +72,11 @@ public class Book {
         this.authors = authors;
     }
 
-    public List<Copy> getCopies() {
+    public Set<Copy> getCopies() {
         return copies;
     }
 
-    public void setCopies(List<Copy> copies) {
+    public void setCopies(Set<Copy> copies) {
         this.copies = copies;
     }
 }
