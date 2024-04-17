@@ -44,6 +44,10 @@ public class Book {
         return count;
     }
 
+    public void addAuthor(Author author) {
+        authors.add(author);
+    }
+
     public int getTotalNumberOfCopies() {
         return copies.size();
     }
